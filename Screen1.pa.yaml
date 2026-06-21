@@ -1,0 +1,320 @@
+Screens:
+  Screen1:
+    Properties:
+      Fill: =ColorBg
+    Children:
+      - ScreenContainer1:
+          Control: GroupContainer
+          Variant: AutoLayout
+          Properties:
+            Fill: =ColorBg
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            Width: =Parent.Width
+          Children:
+            - HeaderContainer1:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorSurface
+                  FillPortions: =0
+                  Height: =64
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutJustifyContent: =LayoutJustifyContent.SpaceBetween
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  PaddingBottom: =8
+                  PaddingLeft: =16
+                  PaddingRight: =16
+                  PaddingTop: =8
+                Children:
+                  - LogoImage:
+                      Control: Image
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        Height: =40
+                        Image: ='Main on Dark back 3'
+                  - UserAvatar:
+                      Control: Avatar
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        BasePaletteColor: =ColorPrimary
+                        Height: =36
+                        Name: =varCurrentUserName
+                        Width: =36
+            - MainContainer1:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorBg
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =12
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                  PaddingBottom: =16
+                  PaddingLeft: =16
+                  PaddingRight: =16
+                  PaddingTop: =16
+                Children:
+                  - avatarLarge:
+                      Control: Avatar
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        BasePaletteColor: =ColorPrimary
+                        Name: =varCurrentUserName
+                  - lblProfileName:
+                      Control: ModernText
+                      Properties:
+                        Align: =Align.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        AutoHeight: =true
+                        Color: =ColorTextPrimary
+                        FontWeight: =FontWeight.Bold
+                        Size: =20
+                        Text: =varCurrentUserName
+                  - lblProfileEmail:
+                      Control: ModernText
+                      Properties:
+                        Align: =Align.Center
+                        AlignInContainer: =AlignInContainer.Stretch
+                        AutoHeight: =true
+                        Color: =ColorTextSecondary
+                        Size: =13
+                        Text: =varCurrentUserEmail
+                  - statsRow:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        FillPortions: =0
+                        Height: =80
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                      Children:
+                        - statTotal:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorSurface
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =2
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              PaddingBottom: =8
+                              PaddingLeft: =4
+                              PaddingRight: =4
+                              PaddingTop: =8
+                              RadiusBottomLeft: =10
+                              RadiusBottomRight: =10
+                              RadiusTopLeft: =10
+                              RadiusTopRight: =10
+                            Children:
+                              - lblTotalNum:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorPrimary
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =26
+                                    Text: =Text(CountIf(Requests, RequesterEmail = varCurrentUserEmail))
+                                    Wrap: =false
+                              - lblTotalLabel:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorTextSecondary
+                                    Size: =11
+                                    Text: ="Нийт"
+                                    Wrap: =false
+                        - statPending:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorSurface
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =2
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              PaddingBottom: =8
+                              PaddingLeft: =4
+                              PaddingRight: =4
+                              PaddingTop: =8
+                              RadiusBottomLeft: =10
+                              RadiusBottomRight: =10
+                              RadiusTopLeft: =10
+                              RadiusTopRight: =10
+                            Children:
+                              - lblPendingNum:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorWarning
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =26
+                                    Text: =Text(CountIf(Requests, RequesterEmail = varCurrentUserEmail && Status.Value = "Pending Manager"))
+                                    Wrap: =false
+                              - lblPendingLabel:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorTextSecondary
+                                    Size: =11
+                                    Text: ="Хүлээгдэж байна"
+                                    Wrap: =false
+                        - statApproved:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorSurface
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =2
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              PaddingBottom: =8
+                              PaddingLeft: =4
+                              PaddingRight: =4
+                              PaddingTop: =8
+                              RadiusBottomLeft: =10
+                              RadiusBottomRight: =10
+                              RadiusTopLeft: =10
+                              RadiusTopRight: =10
+                            Children:
+                              - lblApprovedNum:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorSuccess
+                                    FontWeight: =FontWeight.Bold
+                                    Size: =26
+                                    Text: =Text(CountIf(Requests, RequesterEmail = varCurrentUserEmail && Status.Value = "Approved"))
+                                    Wrap: =false
+                              - lblApprovedLabel:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    AutoHeight: =true
+                                    Color: =ColorTextSecondary
+                                    Size: =11
+                                    Text: ="Зөвшөөрөгдсөн"
+                                    Wrap: =false
+                  - btnNewRequest:
+                      Control: ModernButton
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        BasePaletteColor: =ColorPrimary
+                        Height: =48
+                        OnSelect: =Navigate(Screen2)
+                        Text: ="＋  Шинэ хүсэлт"
+                  - lblSectionHeader:
+                      Control: ModernText
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        AutoHeight: =true
+                        Color: =ColorTextSecondary
+                        FontWeight: =FontWeight.Semibold
+                        Size: =14
+                        Text: ="Таны хүсэлтүүд"
+                  - galRequests:
+                      Control: Gallery
+                      Variant: Vertical
+                      Properties:
+                        FillPortions: =0
+                        Height: =CountRows(Self.AllItems) * 124
+                        Items: =SortByColumns(Filter(Requests, RequesterEmail = varCurrentUserEmail), "SubmittedOn", SortOrder.Descending)
+                        ShowScrollbar: =false
+                        TemplatePadding: =8
+                        TemplateSize: =116
+                        Width: =Parent.Width - 32
+                      Children:
+                        - cardBg1:
+                            Control: GroupContainer
+                            Variant: ManualLayout
+                            Properties:
+                              Fill: =ColorSurface
+                              Height: =112
+                              RadiusBottomLeft: =10
+                              RadiusBottomRight: =10
+                              RadiusTopLeft: =10
+                              RadiusTopRight: =10
+                              Width: =Parent.Width - 8
+                              X: =4
+                              Y: =2
+                        - lblReqTitle:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextPrimary
+                              FontWeight: =FontWeight.Semibold
+                              Height: =26
+                              Size: =14
+                              Text: =ThisItem.Title
+                              Width: =Parent.Width - 24
+                              X: =16
+                              Y: =12
+                        - lblReqDates:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextSecondary
+                              Height: =22
+                              Size: =12
+                              Text: =Text(ThisItem.StartDate,"yyyy-mm-dd") & " – " & Text(ThisItem.EndDate,"yyyy-mm-dd")
+                              Width: =Parent.Width - 24
+                              X: =16
+                              Y: =42
+                        - lblReqStatus:
+                            Control: Label
+                            Properties:
+                              Color: =Switch(ThisItem.Status.Value, "Approved", ColorSuccess, "Rejected", ColorDanger, ColorWarning)
+                              FontWeight: =FontWeight.Semibold
+                              Height: =22
+                              Size: =12
+                              Text: =Switch(ThisItem.Status.Value, "Approved", "Зөвшөөрсөн", "Rejected", "Татгалзсан", "Pending Manager", "Хүлээгдэж байна", "Pending CEO", "CEO хянаж байна", ThisItem.Status.Value)
+                              Width: =Parent.Width - 24
+                              X: =16
+                              Y: =66
+            - FooterContainer1:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorSurface
+                  FillPortions: =0
+                  Height: =64
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutJustifyContent: =LayoutJustifyContent.Center
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                Children:
+                  - tabNav:
+                      Control: ModernTabList
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        BasePaletteColor: =ColorPrimary
+                        Default: |-
+                          ={Value: "Нүүр"}
+                        FillPortions: =1
+                        Items: =If(varIsManager, Table({Value:"Нүүр"},{Value:"Менежер"}), Table({Value:"Нүүр"}))
+                        OnChange: |-
+                          =If(
+                            Self.Selected.Value = "Нүүр", Navigate(Screen1, ScreenTransition.None),
+                            Self.Selected.Value = "Менежер", Navigate(Screen3, ScreenTransition.None)
+                          )

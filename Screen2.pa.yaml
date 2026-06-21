@@ -1,0 +1,476 @@
+Screens:
+  Screen2:
+    Properties:
+      Fill: =ColorBg
+    Children:
+      - ScreenContainer2:
+          Control: GroupContainer
+          Variant: AutoLayout
+          Properties:
+            Fill: =ColorBg
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            Width: =Parent.Width
+          Children:
+            - HeaderContainer2:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorSurface
+                  FillPortions: =0
+                  Height: =56
+                  LayoutAlignItems: =LayoutAlignItems.Center
+                  LayoutDirection: =LayoutDirection.Horizontal
+                  LayoutGap: =8
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  PaddingBottom: =8
+                  PaddingLeft: =8
+                  PaddingRight: =16
+                  PaddingTop: =8
+                Children:
+                  - btnBack:
+                      Control: Classic/Icon
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Center
+                        Color: =ColorTextPrimary
+                        Fill: =RGBA(0,0,0,0)
+                        Height: =36
+                        Icon: =Icon.ChevronLeft
+                        OnSelect: =Navigate(Screen1)
+                        Width: =36
+                  - lblTitle2:
+                      Control: Label
+                      Properties:
+                        Color: =ColorTextPrimary
+                        FontWeight: =FontWeight.Bold
+                        Height: =32
+                        Size: =17
+                        Text: ="Шинэ хүсэлт"
+                        Width: =200
+            - MainContainer2:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorBg
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =8
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  LayoutOverflowY: =LayoutOverflow.Scroll
+                  PaddingBottom: =16
+                  PaddingLeft: =16
+                  PaddingRight: =16
+                  PaddingTop: =12
+                Children:
+                  - typeRow:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                      Children:
+                        - lblTypeInline:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextSecondary
+                              Height: =32
+                              Size: =12
+                              Text: ="Хүсэлтийн төрөл"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =130
+                        - ddRequestType:
+                            Control: ModernDropdown
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              BasePaletteColor: =ColorPrimary
+                              FillPortions: =1
+                              ItemDisplayText: =ThisItem.Title
+                              Items: =RequestTypes
+                  - datesRow:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                      Children:
+                        - lblStartInline:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextSecondary
+                              Height: =32
+                              Size: =12
+                              Text: ="Эхлэх"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =45
+                        - dpStartDate:
+                            Control: ModernDatePicker
+                            Properties:
+                              BasePaletteColor: =ColorPrimary
+                              FillPortions: =1
+                        - lblEndInline:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextSecondary
+                              Height: =32
+                              Size: =12
+                              Text: ="Дуусах"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =52
+                        - dpEndDate:
+                            Control: ModernDatePicker
+                            Properties:
+                              BasePaletteColor: =ColorPrimary
+                              FillPortions: =1
+                  - reasonRow:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Start
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        Visible: =ddRequestType.Selected.Title <> "Томилолт"
+                      Children:
+                        - lblReasonInline:
+                            Control: Label
+                            Properties:
+                              Color: =ColorTextSecondary
+                              Height: =36
+                              Size: =12
+                              Text: ="Шалтгаан"
+                              VerticalAlign: =VerticalAlign.Middle
+                              Width: =80
+                        - txtReason:
+                            Control: ModernTextInput
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              BasePaletteColor: =ColorPrimary
+                              FillPortions: =1
+                              Height: =80
+                              Placeholder: ="Шалтгаанаа бичнэ үү..."
+                              Type: =TextInputType.Multiline
+                  - tripSection:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        Visible: =ddRequestType.Selected.Title = "Томилолт"
+                      Children:
+                        - lblTripHeader:
+                            Control: Label
+                            Properties:
+                              Color: =ColorPrimary
+                              FontWeight: =FontWeight.Bold
+                              Height: =22
+                              Size: =12
+                              Text: ="Томилолтын мэдээлэл"
+                              Width: =200
+                        - vehicleRow:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =6
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblGoV:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Явах"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =38
+                              - ddTripVehicleGo:
+                                  Control: ModernDropdown
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    ItemDisplayText: =ThisItem.Value
+                                    Items: =["Онгоц", "Машин", "Галт тэрэг", "Автобус"]
+                              - lblRetV:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Ирэх"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =38
+                              - ddTripVehicleReturn:
+                                  Control: ModernDropdown
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    ItemDisplayText: =ThisItem.Value
+                                    Items: =["Онгоц", "Машин", "Галт тэрэг", "Автобус"]
+                        - routeRow:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =6
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblGoR:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Явах маршрут"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =82
+                              - txtTripRouteGo:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="УБ → Дархан"
+                              - lblRetR:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Ирэх маршрут"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =82
+                              - txtTripRouteReturn:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="Дархан → УБ"
+                        - costRow1:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =6
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblDays:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Хоног"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =44
+                              - txtTripDays:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="0"
+                              - lblFood:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Хоол/өдөр ₮"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =78
+                              - txtTripFoodPerDay:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="0"
+                              - lblHotel:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Буудал/өдөр ₮"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =88
+                              - txtTripHotelPerDay:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="0"
+                        - costRow2:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =6
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblTransport:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Тээвэр ₮"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =60
+                              - txtTripTransport:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =2
+                                    Placeholder: ="0"
+                              - tripTotalBox:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =ColorPrimaryLight
+                                    FillPortions: =3
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =8
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    PaddingBottom: =6
+                                    PaddingLeft: =10
+                                    PaddingRight: =10
+                                    PaddingTop: =6
+                                    RadiusBottomLeft: =6
+                                    RadiusBottomRight: =6
+                                    RadiusTopLeft: =6
+                                    RadiusTopRight: =6
+                                  Children:
+                                    - lblNiit:
+                                        Control: Label
+                                        Properties:
+                                          Color: =ColorPrimary
+                                          Height: =20
+                                          Size: =10
+                                          Text: ="НИЙТ"
+                                          Width: =36
+                                    - lblGrandTotalVal:
+                                        Control: Label
+                                        Properties:
+                                          Color: =ColorPrimary
+                                          FontWeight: =FontWeight.Bold
+                                          Height: =24
+                                          Size: =14
+                                          Text: =Text(IfError(Value(txtTripFoodPerDay.Text), 0) * IfError(Value(txtTripDays.Text), 0) + IfError(Value(txtTripHotelPerDay.Text), 0) * IfError(Value(txtTripDays.Text), 0) + IfError(Value(txtTripTransport.Text), 0), "#,##0") & " ₮"
+                                          Width: =200
+                        - bankRow:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              AlignInContainer: =AlignInContainer.Stretch
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =6
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblBank:
+                                  Control: Label
+                                  Properties:
+                                    Color: =ColorTextSecondary
+                                    Height: =32
+                                    Size: =11
+                                    Text: ="Банк / данс"
+                                    VerticalAlign: =VerticalAlign.Middle
+                                    Width: =70
+                              - txtTripBankInfo:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =1
+                                    Placeholder: ="Хаан банк / 5001234567"
+                  - actionRow:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        FillPortions: =0
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =8
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                      Children:
+                        - btnSubmitReq:
+                            Control: ModernButton
+                            Properties:
+                              BasePaletteColor: =ColorPrimary
+                              FillPortions: =3
+                              Height: =44
+                              OnSelect: |-
+                                =Patch(Requests, Defaults(Requests), {
+                                  Title: ddRequestType.Selected.Title,
+                                  Status: {Value: "Pending Manager"},
+                                  StartDate: dpStartDate.SelectedDate,
+                                  EndDate: dpEndDate.SelectedDate,
+                                  Reason: If(
+                                    ddRequestType.Selected.Title = "Томилолт",
+                                    "ТОМИЛОЛТ" & Char(10) &
+                                    "Явах: " & ddTripVehicleGo.Selected.Value & " | " & txtTripRouteGo.Text & Char(10) &
+                                    "Ирэх: " & ddTripVehicleReturn.Selected.Value & " | " & txtTripRouteReturn.Text & Char(10) &
+                                    "Хоног: " & txtTripDays.Text & Char(10) &
+                                    "Хоолны зардал/өдөр: " & txtTripFoodPerDay.Text & " ₮" & Char(10) &
+                                    "Буудлын зардал/өдөр: " & txtTripHotelPerDay.Text & " ₮" & Char(10) &
+                                    "Тээврийн зардал: " & txtTripTransport.Text & " ₮" & Char(10) &
+                                    "Нийт зардал: " & Text(IfError(Value(txtTripFoodPerDay.Text),0)*IfError(Value(txtTripDays.Text),0)+IfError(Value(txtTripHotelPerDay.Text),0)*IfError(Value(txtTripDays.Text),0)+IfError(Value(txtTripTransport.Text),0),"#,##0") & " ₮" & Char(10) &
+                                    "Банкны мэдээлэл: " & txtTripBankInfo.Text,
+                                    txtReason.Text
+                                  ),
+                                  SubmittedOn: Today(),
+                                  RequesterEmail: varCurrentUserEmail,
+                                  RequesterName: varCurrentUserName,
+                                  ManagerEmail: IfError(Office365Users.ManagerV2(varCurrentUserEmail).mail, ""),
+                                  ManagerComments: ""
+                                });
+                                Navigate(Screen1)
+                              Text: ="Илгээх"
+                        - btnCancelReq:
+                            Control: ModernButton
+                            Properties:
+                              Appearance: =ButtonAppearance.Transparent
+                              FillPortions: =1
+                              Height: =44
+                              OnSelect: =Navigate(Screen1)
+                              Text: ="Болих"

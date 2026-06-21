@@ -1,0 +1,14 @@
+Screens:
+  Screen4:
+    Properties:
+      Fill: =ColorBg
+    Children:
+      - ScreenContainer4:
+          Control: GroupContainer
+          Variant: AutoLayout
+          Properties:
+            Fill: =ColorBg
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Vertical
+            Width: =Parent.Width

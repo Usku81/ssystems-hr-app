@@ -1,0 +1,7 @@
+# Power Apps build artifacts
+*.msapp
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db

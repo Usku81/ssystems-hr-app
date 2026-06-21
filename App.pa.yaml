@@ -1,0 +1,21 @@
+App:
+  Properties:
+    Formulas: |-
+      =ColorPrimary = RGBA(234, 86, 13, 1);
+      ColorPrimaryLight = RGBA(234, 86, 13, 0.12);
+      ColorBg = RGBA(246, 246, 248, 1);
+      ColorSurface = RGBA(255, 255, 255, 1);
+      ColorTextPrimary = RGBA(20, 20, 30, 1);
+      ColorTextSecondary = RGBA(100, 100, 115, 1);
+      ColorSuccess = RGBA(16, 150, 72, 1);
+      ColorWarning = RGBA(200, 130, 0, 1);
+      ColorDanger = RGBA(210, 40, 40, 1)
+    OnStart: |-
+      =Set(varCurrentUser, Office365Users.MyProfile());
+      Set(varCurrentUserName, varCurrentUser.DisplayName);
+      Set(varCurrentUserEmail, varCurrentUser.Mail);
+      Set(varIsManager, varCurrentUserEmail in ["usukhbayar.g@ssystems.mn","gombodorj.m@ssystems.mn","altai.j@ssystems.mn","batjargal.b@ssystems.mn","delgermaa.b@ssystems.mn","khatantuul.m@ssystems.mn","nasanbat.b@ssystems.mn"]);
+      Set(varSelectedRequest, First(Filter(Requests, false)));
+      Set(varActiveTab, "home")
+    StartScreen: =Screen1
+    Theme: =PowerAppsTheme
