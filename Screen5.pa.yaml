@@ -1,0 +1,788 @@
+Screens:
+  Screen5:
+    Properties:
+      Fill: =ColorMainBg
+    Children:
+      - ScreenContainer5:
+          Control: GroupContainer
+          Variant: AutoLayout
+          Properties:
+            Fill: =ColorMainBg
+            Height: =Parent.Height
+            LayoutAlignItems: =LayoutAlignItems.Stretch
+            LayoutDirection: =LayoutDirection.Horizontal
+            LayoutGap: =0
+            Width: =Parent.Width
+          Children:
+            - Sidebar5:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorSurface
+                  FillPortions: =0
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =4
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                  PaddingBottom: =18
+                  PaddingLeft: =14
+                  PaddingRight: =14
+                  PaddingTop: =18
+                  Width: =220
+                Children:
+                  - brandRow5:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        FillPortions: =0
+                        Height: =48
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =10
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        PaddingBottom: =14
+                        PaddingLeft: =8
+                      Children:
+                        - brandBox5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorPrimary
+                              FillPortions: =0
+                              Height: =30
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutJustifyContent: =LayoutJustifyContent.Center
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                              Width: =30
+                            Children:
+                              - brandLetter5:
+                                  Control: ModernText
+                                  Properties:
+                                    Align: =Align.Center
+                                    AutoHeight: =true
+                                    Color: =ColorSurface
+                                    FontWeight: =FontWeight.Bold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =15
+                                    Text: ="S"
+                        - brandText5:
+                            Control: ModernText
+                            Properties:
+                              AutoHeight: =true
+                              Color: =ColorTextDark
+                              FontWeight: =FontWeight.Bold
+                              PaddingBottom: =0
+                              PaddingLeft: =0
+                              PaddingRight: =0
+                              PaddingTop: =0
+                              Size: =15
+                              Text: ="SSystems"
+                              Wrap: =false
+                  - navMy5:
+                      Control: ModernButton
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Appearance: =ButtonAppearance.Subtle
+                        BasePaletteColor: =ColorPrimary
+                        Height: =40
+                        OnSelect: =Navigate(Screen1)
+                        Text: ="Миний хүсэлтүүд"
+                  - navApprovals5:
+                      Control: ModernButton
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Appearance: =ButtonAppearance.Transparent
+                        BasePaletteColor: =ColorTextMuted
+                        Height: =40
+                        OnSelect: =Navigate(Screen3)
+                        Text: ="Батлах хүсэлтүүд"
+                        Visible: =varIsManager
+                  - navAdd5:
+                      Control: ModernButton
+                      Properties:
+                        AlignInContainer: =AlignInContainer.Stretch
+                        Appearance: =ButtonAppearance.Transparent
+                        BasePaletteColor: =ColorTextMuted
+                        Height: =40
+                        OnSelect: =Notify("Удахгүй нэмэгдэнэ.", NotificationType.Information)
+                        Text: ="Ажилтан нэмэх"
+                        Visible: =varIsManager
+                  - navSpacer5:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =RGBA(0, 0, 0, 0)
+                        FillPortions: =1
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                  - profileRow5:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        FillPortions: =0
+                        Height: =52
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =10
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        PaddingLeft: =8
+                        PaddingTop: =10
+                      Children:
+                        - profileAvatar5:
+                            Control: Avatar
+                            Properties:
+                              BasePaletteColor: =ColorPrimary
+                              Height: =32
+                              Name: =varCurrentUserName
+                              Width: =32
+                        - profileInfo5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =1
+                              LayoutAlignItems: =LayoutAlignItems.Start
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - profileName5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: =varCurrentUserName
+                                    Wrap: =false
+                              - profileRole5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextFaint
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =11
+                                    Text: =If(varIsManager, "Менежер", "Ажилтан")
+                                    Wrap: =false
+            - MainColumn5:
+                Control: GroupContainer
+                Variant: AutoLayout
+                Properties:
+                  Fill: =ColorMainBg
+                  FillPortions: =1
+                  LayoutAlignItems: =LayoutAlignItems.Stretch
+                  LayoutDirection: =LayoutDirection.Vertical
+                  LayoutGap: =0
+                  LayoutMinHeight: =0
+                  LayoutMinWidth: =0
+                Children:
+                  - TopBar5:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =ColorSurface
+                        FillPortions: =0
+                        Height: =64
+                        LayoutAlignItems: =LayoutAlignItems.Center
+                        LayoutDirection: =LayoutDirection.Horizontal
+                        LayoutGap: =10
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        PaddingBottom: =10
+                        PaddingLeft: =28
+                        PaddingRight: =28
+                        PaddingTop: =10
+                      Children:
+                        - TopBarText5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =1
+                              LayoutAlignItems: =LayoutAlignItems.Start
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - lblCrumb5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextFaint
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =12
+                                    Text: ="Шинэ хүсэлт"
+                                    Wrap: =false
+                              - lblTitle5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Bold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =17
+                                    Text: ="Томилолтын хүсэлт"
+                                    Wrap: =false
+                        - badgeDays5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorSidebarActiveBg
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              PaddingBottom: =6
+                              PaddingLeft: =12
+                              PaddingRight: =12
+                              PaddingTop: =6
+                              RadiusBottomLeft: =8
+                              RadiusBottomRight: =8
+                              RadiusTopLeft: =8
+                              RadiusTopRight: =8
+                            Children:
+                              - lblDays5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorPrimary
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Томилолтын нийт өдөр: " & (DateDiff(dpStartDate5.SelectedDate, dpEndDate5.SelectedDate) + 1)
+                                    Wrap: =false
+                  - ContentArea5:
+                      Control: GroupContainer
+                      Variant: AutoLayout
+                      Properties:
+                        Fill: =ColorMainBg
+                        FillPortions: =1
+                        LayoutAlignItems: =LayoutAlignItems.Stretch
+                        LayoutDirection: =LayoutDirection.Vertical
+                        LayoutGap: =16
+                        LayoutMinHeight: =0
+                        LayoutMinWidth: =0
+                        LayoutOverflowY: =LayoutOverflow.Scroll
+                        PaddingBottom: =26
+                        PaddingLeft: =30
+                        PaddingRight: =30
+                        PaddingTop: =26
+                      Children:
+                        - FormCard5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              Fill: =ColorSurface
+                              FillPortions: =0
+                              LayoutAlignItems: =LayoutAlignItems.Stretch
+                              LayoutDirection: =LayoutDirection.Vertical
+                              LayoutGap: =20
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                              PaddingBottom: =30
+                              PaddingLeft: =34
+                              PaddingRight: =34
+                              PaddingTop: =30
+                              RadiusBottomLeft: =14
+                              RadiusBottomRight: =14
+                              RadiusTopLeft: =14
+                              RadiusTopRight: =14
+                            Children:
+                              - lblReasonLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Тайлбар *"
+                                    Wrap: =false
+                              - txtReason5:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BasePaletteColor: =ColorPrimary
+                                    Placeholder: ="Хүсэлтийн тайлбараа бичнэ үү"
+                              - lblDatesLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Огноо *"
+                                    Wrap: =false
+                              - DatesRow5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =18
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - dpStartDate5:
+                                        Control: ModernDatePicker
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                    - dpEndDate5:
+                                        Control: ModernDatePicker
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                              - lblTransportLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Тээврийн хэрэгсэл *"
+                                    Wrap: =false
+                              - TransportRow5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    LayoutAlignItems: =LayoutAlignItems.Stretch
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =18
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - ddTransOut5:
+                                        Control: ModernDropdown
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                          ItemDisplayText: =ThisItem.Value
+                                          Items: =Table({Value:"Машин"},{Value:"Онгоц"},{Value:"Галт тэрэг"},{Value:"Автобус"})
+                                    - ddTransReturn5:
+                                        Control: ModernDropdown
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                          ItemDisplayText: =ThisItem.Value
+                                          Items: =Table({Value:"Машин"},{Value:"Онгоц"},{Value:"Галт тэрэг"},{Value:"Автобус"})
+                              - lblRouteLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Маршрут *"
+                                    Wrap: =false
+                              - txtRoute5:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BasePaletteColor: =ColorPrimary
+                                    Placeholder: ="Жишээ: Улаанбаатараас Дархан"
+                              - lblExpensesLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Зардлууд *"
+                                    Wrap: =false
+                              - ExpHeader5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    Fill: =ColorMainBg
+                                    FillPortions: =0
+                                    Height: =36
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    PaddingLeft: =14
+                                    PaddingRight: =14
+                                    RadiusTopLeft: =10
+                                    RadiusTopRight: =10
+                                  Children:
+                                    - hdrType5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextFaint
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =11
+                                          Text: ="ТӨРӨЛ"
+                                          Wrap: =false
+                                    - hdrDaily5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextFaint
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =11
+                                          Text: ="ХОНОГИЙН ЗАРДАЛ"
+                                          Wrap: =false
+                                    - hdrDays5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextFaint
+                                          FillPortions: =1
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =11
+                                          Text: ="ӨДӨР"
+                                          Wrap: =false
+                                    - hdrTotal5:
+                                        Control: ModernText
+                                        Properties:
+                                          Align: =Align.Right
+                                          AutoHeight: =true
+                                          Color: =ColorTextFaint
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =11
+                                          Text: ="НИЙТ ЗАРДАЛ"
+                                          Wrap: =false
+                              - ExpMeal5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    Height: =56
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    PaddingLeft: =14
+                                    PaddingRight: =14
+                                  Children:
+                                    - lblMeal5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Semibold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: ="Хоолны зардал"
+                                          Wrap: =false
+                                    - txtMealDaily5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =2
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - txtMealDays5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - lblMealTotal5:
+                                        Control: ModernText
+                                        Properties:
+                                          Align: =Align.Right
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: =Text(IfError(txtMealDaily5.Value, 0) * IfError(txtMealDays5.Value, 0), "#,##0")
+                                          Wrap: =false
+                              - ExpHotel5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    Height: =56
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    PaddingLeft: =14
+                                    PaddingRight: =14
+                                  Children:
+                                    - lblHotel5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Semibold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: ="Буудлын зардал"
+                                          Wrap: =false
+                                    - txtHotelDaily5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =2
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - txtHotelDays5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - lblHotelTotal5:
+                                        Control: ModernText
+                                        Properties:
+                                          Align: =Align.Right
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: =Text(IfError(txtHotelDaily5.Value, 0) * IfError(txtHotelDays5.Value, 0), "#,##0")
+                                          Wrap: =false
+                              - ExpTrans5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    Height: =56
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =10
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                    PaddingLeft: =14
+                                    PaddingRight: =14
+                                  Children:
+                                    - lblTrans5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Semibold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: ="Унааны зардал"
+                                          Wrap: =false
+                                    - txtTransDaily5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =2
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - txtTransDays5:
+                                        Control: ModernTextInput
+                                        Properties:
+                                          BasePaletteColor: =ColorPrimary
+                                          FillPortions: =1
+                                          Format: =TextFormat.Number
+                                          Placeholder: ="0"
+                                    - lblTransTotal5:
+                                        Control: ModernText
+                                        Properties:
+                                          Align: =Align.Right
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =2
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: =Text(IfError(txtTransDaily5.Value, 0) * IfError(txtTransDays5.Value, 0), "#,##0")
+                                          Wrap: =false
+                              - lblAccountLabel5:
+                                  Control: ModernText
+                                  Properties:
+                                    AutoHeight: =true
+                                    Color: =ColorTextDark
+                                    FontWeight: =FontWeight.Semibold
+                                    PaddingBottom: =0
+                                    PaddingLeft: =0
+                                    PaddingRight: =0
+                                    PaddingTop: =0
+                                    Size: =13
+                                    Text: ="Дансны дугаар *"
+                                    Wrap: =false
+                              - txtAccount5:
+                                  Control: ModernTextInput
+                                  Properties:
+                                    AlignInContainer: =AlignInContainer.Stretch
+                                    BasePaletteColor: =ColorPrimary
+                                    Placeholder: ="Жишээ: MN050004 421234567"
+                              - BudgetRow5:
+                                  Control: GroupContainer
+                                  Variant: AutoLayout
+                                  Properties:
+                                    FillPortions: =0
+                                    Height: =48
+                                    LayoutAlignItems: =LayoutAlignItems.Center
+                                    LayoutDirection: =LayoutDirection.Horizontal
+                                    LayoutGap: =14
+                                    LayoutJustifyContent: =LayoutJustifyContent.End
+                                    LayoutMinHeight: =0
+                                    LayoutMinWidth: =0
+                                  Children:
+                                    - lblBudgetLabel5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorTextDark
+                                          FillPortions: =0
+                                          FontWeight: =FontWeight.Semibold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =13
+                                          Text: ="Нийт төсөв"
+                                          Wrap: =false
+                                    - lblBudgetValue5:
+                                        Control: ModernText
+                                        Properties:
+                                          AutoHeight: =true
+                                          Color: =ColorPrimary
+                                          FillPortions: =0
+                                          FontWeight: =FontWeight.Bold
+                                          PaddingBottom: =0
+                                          PaddingLeft: =0
+                                          PaddingRight: =0
+                                          PaddingTop: =0
+                                          Size: =22
+                                          Text: =Text(IfError(txtMealDaily5.Value, 0) * IfError(txtMealDays5.Value, 0) + IfError(txtHotelDaily5.Value, 0) * IfError(txtHotelDays5.Value, 0) + IfError(txtTransDaily5.Value, 0) * IfError(txtTransDays5.Value, 0), "#,##0") & " төгрөг"
+                                          Wrap: =false
+                        - FormActions5:
+                            Control: GroupContainer
+                            Variant: AutoLayout
+                            Properties:
+                              FillPortions: =0
+                              Height: =48
+                              LayoutAlignItems: =LayoutAlignItems.Center
+                              LayoutDirection: =LayoutDirection.Horizontal
+                              LayoutGap: =12
+                              LayoutJustifyContent: =LayoutJustifyContent.End
+                              LayoutMinHeight: =0
+                              LayoutMinWidth: =0
+                            Children:
+                              - btnCancel5:
+                                  Control: ModernButton
+                                  Properties:
+                                    Appearance: =ButtonAppearance.Outline
+                                    BasePaletteColor: =ColorTextMuted
+                                    FillPortions: =0
+                                    Height: =44
+                                    OnSelect: =Navigate(Screen2)
+                                    Text: ="Буцах"
+                              - btnSubmit5:
+                                  Control: ModernButton
+                                  Properties:
+                                    BasePaletteColor: =ColorPrimary
+                                    FillPortions: =0
+                                    Height: =44
+                                    OnSelect: |-
+                                      =Patch(Requests, Defaults(Requests), {
+                                        Title: "Томилолт",
+                                        Status: {Value: "Pending Manager"},
+                                        StartDate: dpStartDate5.SelectedDate,
+                                        EndDate: dpEndDate5.SelectedDate,
+                                        Reason: txtReason5.Text & " | Маршрут: " & txtRoute5.Text & " | Тээвэр: " & ddTransOut5.Selected.Value & " - " & ddTransReturn5.Selected.Value & " | Данс: " & txtAccount5.Text & " | Нийт төсөв: " & Text(IfError(txtMealDaily5.Value, 0) * IfError(txtMealDays5.Value, 0) + IfError(txtHotelDaily5.Value, 0) * IfError(txtHotelDays5.Value, 0) + IfError(txtTransDaily5.Value, 0) * IfError(txtTransDays5.Value, 0), "#,##0") & " төгрөг",
+                                        SubmittedOn: Today(),
+                                        RequesterEmail: varCurrentUserEmail,
+                                        RequesterName: varCurrentUserName,
+                                        ManagerEmail: IfError(Office365Users.ManagerV2(varCurrentUserEmail).mail, ""),
+                                        ManagerComments: ""
+                                      });
+                                      Navigate(Screen1)
+                                    Text: ="Илгээх"

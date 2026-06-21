@@ -9,13 +9,30 @@ App:
       ColorTextSecondary = RGBA(100, 100, 115, 1);
       ColorSuccess = RGBA(16, 150, 72, 1);
       ColorWarning = RGBA(200, 130, 0, 1);
-      ColorDanger = RGBA(210, 40, 40, 1)
+      ColorDanger = RGBA(210, 40, 40, 1);
+      ColorMainBg = RGBA(247, 246, 245, 1);
+      ColorTextDark = RGBA(27, 26, 24, 1);
+      ColorTextMuted = RGBA(124, 117, 110, 1);
+      ColorTextFaint = RGBA(154, 147, 140, 1);
+      ColorBorder = RGBA(233, 231, 227, 1);
+      ColorBorderInput = RGBA(220, 218, 213, 1);
+      ColorSidebarActiveBg = RGBA(253, 238, 229, 1);
+      ColorPendingText = RGBA(180, 83, 9, 1);
+      ColorPendingBg = RGBA(254, 243, 226, 1);
+      ColorApprovedText = RGBA(21, 128, 61, 1);
+      ColorApprovedBg = RGBA(231, 246, 236, 1);
+      ColorRejectText = RGBA(153, 27, 27, 1);
+      ColorRejectBg = RGBA(254, 226, 226, 1)
     OnStart: |-
       =Set(varCurrentUser, Office365Users.MyProfile());
       Set(varCurrentUserName, varCurrentUser.DisplayName);
       Set(varCurrentUserEmail, varCurrentUser.Mail);
       Set(varIsManager, varCurrentUserEmail in ["usukhbayar.g@ssystems.mn","gombodorj.m@ssystems.mn","altai.j@ssystems.mn","batjargal.b@ssystems.mn","delgermaa.b@ssystems.mn","khatantuul.m@ssystems.mn","nasanbat.b@ssystems.mn"]);
-      Set(varSelectedRequest, First(Filter(Requests, false)));
-      Set(varActiveTab, "home")
+      Set(varSelectedRequest, Blank());
+      Set(varActiveTab, "home");
+      Set(varMyFilter, "Бүгд");
+      Set(varApprovalFilter, "Бүгд");
+      Set(varSelectedType, Blank());
+      Set(varCompRest, false)
     StartScreen: =Screen1
     Theme: =PowerAppsTheme
